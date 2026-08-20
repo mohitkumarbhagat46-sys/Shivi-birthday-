@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Shivi 🎂</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:#fff;
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
+}
+
+/* Background Glow */
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:rgba(212,175,55,.12);
+    filter:blur(120px);
+    border-radius:50%;
+    top:-150px;
+    left:-150px;
+    z-index:-2;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
+    background:rgba(212,175,55,.08);
+    filter:blur(120px);
+    border-radius:50%;
+    bottom:-150px;
+    right:-100px;
+    z-index:-2;
+}
+
+canvas{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:50;
+}
+
+/* Intro */
+.intro{
+    position:fixed;
+    inset:0;
+    background:#050505;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    z-index:100;
+    transition:1.5s ease;
+}
+
+.intro.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.intro-content{
+    animation:introUp 2s ease;
+}
+
+.small{
+    color:#c9a227;
+    letter-spacing:5px;
+    font-size:13px;
+    text-transform:uppercase;
+    margin-bottom:20px;
+}
+
+.intro h1{
+    font-family:'Cinzel',serif;
+    font-size:clamp(35px,8vw,75px);
+    background:linear-gradient(90deg,#fff,#d4af37,#fff);
+    -webkit-background-clip:text;
+    color:transparent;
+    margin-bottom:25px;
+}
+
+.intro p{
+    color:#aaa;
+    margin-bottom:35px;
+}
+
+.start-btn{
+    border:1px solid #c9a227;
+    background:transparent;
+    color:#d4af37;
+    padding:14px 35px;
+    border-radius:40px;
+    cursor:pointer;
+    letter-spacing:2px;
+    transition:.4s;
+}
+
+.start-btn:hover{
+    background:#d4af37;
+    color:#050505;
+    box-shadow:0 0 30px rgba(212,175,55,.4);
+}
+
+@keyframes introUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Main */
+main{
+    max-width:1100px;
+    margin:auto;
+    padding:80px 20px;
+}
+
+section{
+    min-height:90vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.section-label{
+    color:#d4af37;
+    letter-spacing:4px;
+    font-size:12px;
+    text-transform:uppercase;
+    margin-bottom:15px;
+}
+
+h2{
+    font-family:'Cinzel',serif;
+    font-size:clamp(30px,6vw,55px);
+    margin-bottom:25px;
+    background:linear-gradient(90deg,#fff,#d4af37,#fff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:700px;
+    color:#bdbdbd;
+    line-height:1.9;
+    font-size:16px;
+}
+
+/* Name */
+.name{
+    font-family:'Cinzel',serif;
+    font-size:clamp(55px,13vw,120px);
+    font-weight:600;
+    letter-spacing:5px;
+    background:linear-gradient(
+        90deg,
+        #8c6a1d,
+        #fff2a6,
+        #d4af37,
+        #fff2a6,
+        #8c6a1d
+    );
+    -webkit-background-clip:text;
+    color:transparent;
+    background-size:300%;
+    animation:shine 5s linear infinite;
+}
+
+@keyframes shine{
+    0%{background-position:0%}
+    100%{background-position:300%}
+}
+
+/* Glass Card */
+.card{
+    width:100%;
+    max-width:850px;
+    padding:45px 35px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(212,175,55,.25);
+    border-radius:25px;
+    backdrop-filter:blur(12px);
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+.card p{
+    color:#d0d0d0;
+    line-height:2;
+    font-size:16px;
+}
+
+/* Wishes */
+.wishes{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    gap:20px;
+    width:100%;
+    margin-top:30px;
+}
+
+.wish{
+    padding:28px 20px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(212,175,55,.18);
+    border-radius:20px;
+    transition:.4s;
+}
+
+.wish:hover{
+    transform:translateY(-8px);
+    border-color:#d4af37;
+    box-shadow:0 15px 40px rgba(212,175,55,.12);
+}
+
+.wish span{
+    display:block;
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.wish h3{
+    color:#d4af37;
+    margin-bottom:10px;
+}
+
+.wish p{
+    color:#aaa;
+    font-size:14px;
+    line-height:1.7;
+}
+
+/* Surprise */
+.surprise-btn{
+    margin-top:30px;
+    padding:16px 40px;
+    border:1px solid #d4af37;
+    border-radius:50px;
+    background:linear-gradient(90deg,#b8860b,#d4af37,#b8860b);
+    color:#080808;
+    font-weight:600;
+    letter-spacing:1px;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.surprise-btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 40px rgba(212,175,55,.35);
+}
+
+.hidden-message{
+    max-width:750px;
+    margin-top:30px;
+    padding:30px;
+    border-radius:20px;
+    border:1px solid rgba(212,175,55,.3);
+    background:rgba(212,175,55,.04);
+    display:none;
+    animation:reveal .8s ease;
+}
+
+.hidden-message.show{
+    display:block;
+}
+
+@keyframes reveal{
+    from{
+        opacity:0;
+        transform:scale(.9);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* Cake */
+.cake{
+    font-size:100px;
+    margin:20px;
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-12px)}
+}
+
+/* Music */
+.music{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    z-index:60;
+}
+
+.music button{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    border:1px solid #d4af37;
+    background:#0b0b0b;
+    color:#d4af37;
+    cursor:pointer;
+    font-size:18px;
+    box-shadow:0 0 20px rgba(212,175,55,.15);
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:60px 20px;
+    border-top:1px solid rgba(212,175,55,.15);
+}
+
+footer h3{
+    font-family:'Cinzel',serif;
+    color:#d4af37;
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+footer p{
+    color:#777;
+    font-size:13px;
+}
+
+@media(max-width:600px){
+    .card{
+        padding:30px 20px;
+    }
+
+    .hero p,
+    .card p{
+        font-size:14px;
+    }
+
+    main{
+        padding:50px 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="confetti"></canvas>
+
+<!-- Intro -->
+<div class="intro" id="intro">
+    <div class="intro-content">
+        <div class="small">A Special Celebration</div>
+
+        <h1>For My Brother</h1>
+
+        <p>
+            Someone very special is celebrating today...
+        </p>
+
+        <button class="start-btn" onclick="startExperience()">
+            ENTER THE CELEBRATION
+        </button>
+    </div>
+</div>
+
+<!-- Music -->
+<audio id="music" loop>
+    <source src="birthday-music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="music">
+    <button onclick="toggleMusic()" id="musicBtn">♫</button>
+</div>
+
+<main>
+
+<!-- Hero -->
+<section class="hero">
+
+    <div class="section-label">Happy Birthday</div>
+
+    <div class="name">SHIVAM</div>
+
+    <div class="cake">🎂</div>
+
+    <p>
+        Mere bade bhai, mere <b>Shivi</b> ❤️  
+        Aaj ka din sirf tumhara hai.  
+        Ek aur beautiful year of your life begins,
+        aur meri wish hai ki ye saal tumhari life ka
+        sabse memorable chapter bane.
+    </p>
+
+</section>
+
+
+<!-- Letter -->
+<section>
+
+    <div class="section-label">A Letter For Shivi</div>
+
+    <h2>Dear Shivi ❤️</h2>
+
+    <div class="card">
+
+        <p>
+            Shivi, bade bhai hona sirf ek relation nahi hota,
+            balki ek responsibility, ek support aur ek special
+            bond hota hai. Aur honestly, tum mere liye bahut
+            special ho.
+            <br><br>
+
+            Life mein chahe kitni bhi problems aayein,
+            meri wish hamesha ye rahegi ki tum strong raho,
+            khush raho aur apne dreams ko kabhi chhodo nahi.
+            Tum jis bhi cheez ko achieve karna chahte ho,
+            hopefully ek din tum usse zaroor achieve karo.
+            <br><br>
+
+            May this new chapter bring you unlimited happiness,
+            success, peace, good health and countless beautiful
+            memories.
+            <br><br>
+
+            Aur haan Shivi, life mein kitna bhi busy ho jaana,
+            kitna bhi successful ho jaana, bas hamesha aise hi
+            genuine aur amazing rehna.
+            <br><br>
+
+            <b>
+            Once again, Happy Birthday mere bade bhai.
+            You deserve nothing but the very best. ❤️
+            </b>
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- Wishes -->
+<section>
+
+    <div class="section-label">My Wishes For You</div>
+
+    <h2>For Your New Chapter ✨</h2>
+
+    <div class="wishes">
+
+        <div class="wish">
+            <span>❤️</span>
+            <h3>Happiness</h3>
+            <p>
+                Tumhari life hamesha happiness aur
+                beautiful moments se filled rahe.
+            </p>
+        </div>
+
+        <div class="wish">
+            <span>🚀</span>
+            <h3>Success</h3>
+            <p>
+                Tumhare saare dreams reality bane
+                aur tum har goal achieve karo.
+            </p>
+        </div>
+
+        <div class="wish">
+            <span>🌟</span>
+            <h3>Growth</h3>
+            <p>
+                Har saal tum aur grow karo,
+                aur apni life mein aur aage badho.
+            </p>
+        </div>
+
+        <div class="wish">
+            <span>🕊️</span>
+            <h3>Peace</h3>
+            <p>
+                Life mein hamesha peace,
+                positivity aur satisfaction rahe.
+            </p>
+        </div>
+
+        <div class="wish">
+            <span>💫</span>
+            <h3>Dreams</h3>
+            <p>
+                Jo bhi dreams tumhare heart mein hain,
+                woh sab ek din complete hon.
+            </p>
+        </div>
+
+        <div class="wish">
+            <span>🥂</span>
+            <h3>Beautiful Years</h3>
+            <p>
+                Aane wala har year tumhare liye
+                previous year se bhi better ho.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Surprise -->
+<section>
+
+    <div class="section-label">One More Thing</div>
+
+    <h2>A Little Surprise 🎁</h2>
+
+    <p style="color:#aaa;max-width:600px;line-height:1.8;">
+        Shivi, ek last message hai jo sirf tumhare liye hai.
+        Button press karo...
+    </p>
+
+    <button class="surprise-btn" onclick="showSurprise()">
+        OPEN YOUR SURPRISE 🎁
+    </button>
+
+    <div class="hidden-message" id="surprise">
+
+        <p style="line-height:2;color:#ddd;">
+
+            <b style="color:#d4af37;font-size:22px;">
+                Shivi ❤️
+            </b>
+
+            <br><br>
+
+            May you always have a reason to smile,
+            people who genuinely care about you,
+            courage to chase your dreams,
+            and strength to overcome every challenge.
+
+            <br><br>
+
+            Keep shining, keep growing,
+            keep believing in yourself
+            and never forget how special you are.
+
+            <br><br>
+
+            <b>
+                Happy Birthday once again, Bhai! 🎂🎊
+            </b>
+
+        </p>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- Footer -->
+<footer>
+
+    <h3>Happy Birthday, Shivi ❤️</h3>
+
+    <p>
+        May your new year of life be extraordinary.
+    </p>
+
+    <p style="margin-top:15px;">
+        Made with love for a very special brother.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* Intro + Music */
+
+let music = document.getElementById("music");
+let musicBtn = document.getElementById("musicBtn");
+
+function startExperience(){
+
+    document.getElementById("intro").classList.add("hide");
+
+    music.play().then(()=>{
+        musicBtn.innerHTML="❚❚";
+    }).catch(()=>{
+        musicBtn.innerHTML="♫";
+    });
+
+    startConfetti();
+
+}
+
+function toggleMusic(){
+
+    if(music.paused){
+
+        music.play();
+        musicBtn.innerHTML="❚❚";
+
+    }else{
+
+        music.pause();
+        musicBtn.innerHTML="♫";
+
+    }
+
+}
+
+
+/* Surprise */
+
+function showSurprise(){
+
+    const box = document.getElementById("surprise");
+
+    box.classList.add("show");
+
+    startConfetti();
+
+}
+
+
+/* Confetti */
+
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let pieces = [];
+
+function createConfetti(){
+
+    for(let i=0;i<160;i++){
+
+        pieces.push({
+
+            x:Math.random()*canvas.width,
+            y:-20-Math.random()*canvas.height,
+
+            size:Math.random()*7+3,
+
+            speed:Math.random()*4+2,
+
+            rotation:Math.random()*360,
+
+            rotationSpeed:Math.random()*8-4,
+
+            opacity:1
+
+        });
+
+    }
+
+}
+
+function drawConfetti(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    pieces.forEach((p,index)=>{
+
+        p.y += p.speed;
+        p.rotation += p.rotationSpeed;
+
+        ctx.save();
+
+        ctx.translate(p.x,p.y);
+
+        ctx.rotate(p.rotation*Math.PI/180);
+
+        ctx.globalAlpha=p.opacity;
+
+        ctx.fillStyle=[
+            "#d4af37",
+            "#ffffff",
+            "#f5d76e",
+            "#b8860b"
+        ][index%4];
+
+        ctx.fillRect(
+            -p.size/2,
+            -p.size/2,
+            p.size,
+            p.size*1.8
+        );
+
+        ctx.restore();
+
+        if(p.y>canvas.height){
+
+            p.y=-20;
+            p.x=Math.random()*canvas.width;
+
+        }
+
+    });
+
+    requestAnimationFrame(drawConfetti);
+
+}
+
+function startConfetti(){
+
+    createConfetti();
+
+}
+
+drawConfetti();
+
+
+window.addEventListener("resize",()=>{
+
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
+
+});
+
+</script>
+
+</body>
+</html>
